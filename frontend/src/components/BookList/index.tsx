@@ -56,7 +56,7 @@ const BookList: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <div id="book-list">
+    <div className="book-list">
       <div className="box">
         {searchFilter().map((value: any, key: any) => {
             return (
