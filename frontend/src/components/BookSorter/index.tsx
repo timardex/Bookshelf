@@ -7,13 +7,15 @@ interface Props {
 }
 
 const BookSorter: React.FC<Props> = (props: Props) => {
-  const {setSelectedFilter} = props
+  const {setSelectedFilter} = props;
+  
   const sorterType = [
     'Book name ASC',
     'Book name DESC',
     'Author name ASC',
     'Author name DESC',
   ] as Array<string>
+
   return (
     <nav>
       <ul className="sorter-type">

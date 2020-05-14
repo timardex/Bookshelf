@@ -13,10 +13,11 @@ interface Props {
 const BookList: React.FC<Props> = (props: Props) => {
   const {bookshelf, selectedFilter, search} = props;
 
-  /* const convertDate = (time: string):any => {
-    const date = new Date(time);
-    return date.toUTCString()
-  } */
+  const convertDate = (time: string):any => {
+    const date = new Date(time).toUTCString();
+    const thisYear = new Date().getUTCFullYear();
+    return date.includes(`${thisYear}`) ? 'this year' : 'last year'
+  }
   
   const filteredList = ():any => {
     switch(selectedFilter) {
@@ -47,7 +48,10 @@ const BookList: React.FC<Props> = (props: Props) => {
 
   const searchFilter = ():any => {
     return filteredList().filter((value: any) => {
-      return value.name.toLowerCase().includes(search.toLowerCase()) || value.author.name.toLowerCase().includes(search.toLowerCase()) || value.genre.toLowerCase().includes(search.toLowerCase())
+      return value.name.toLowerCase().includes(search.toLowerCase()) ||
+      value.author.name.toLowerCase().includes(search.toLowerCase()) || 
+      value.genre.toLowerCase().includes(search.toLowerCase()) ||
+      value.date.toLowerCase().includes(search.toLowerCase());
     })
   }
 
@@ -59,10 +63,10 @@ const BookList: React.FC<Props> = (props: Props) => {
             <div className="book" key={key}>
               <img src={`${value.image}.jpg`} alt={value.name} />
               <div className="info">
-                <h3 className="title">{value.name}</h3>
-                <p className="genre">{value.genre}</p>
-                {/* <p className="date">Date: {convertDate(value.date)}</p> */}
-                <p className="author" title={`Author gender ${value.author.gender}`}>
+                <h3 className="title custom">{value.name}</h3>
+                <p className="genre custom">{value.genre}</p>
+                <p className="date custom">Published <span>{convertDate(value.date)}</span></p>
+                <p className="author custom" title={`Author gender ${value.author.gender}`}>
                   <span>{value.author.gender === 'female' ? <Female /> : <Male />}</span>
                   {value.author.name}
                 </p>

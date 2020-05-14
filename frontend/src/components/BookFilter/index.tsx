@@ -47,7 +47,7 @@ const BookFilter: React.FC<Props> = (props: Props) => {
     {
       type: 'gender',
       func: getUniques(filterByAuthorGender())
-    },
+    }
   ] as Array<any>
 
   return (
