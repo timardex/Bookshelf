@@ -1,0 +1,69 @@
+@import '../../assets/scss/variables.scss';
+
+#book-list {
+  width: 100%;
+  
+  .box {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-flow: row;
+  }
+
+  .book {
+    background: $color1;
+    position: relative;
+
+    p {
+      margin: 0;
+    }
+
+    .info {
+      padding: .5rem 1rem;
+    }
+
+    .title {
+      margin: 0;
+      text-align: center;
+      position: absolute;
+      top: 0; left: 0;
+      background: $color1;
+      padding: .5rem;
+      width: 100%;
+    }
+
+    .genre {
+      position: absolute;
+      top: 5rem; left: 0;
+      padding: .5rem;
+      background: $color2;
+    }
+
+    .author {
+      position: absolute;
+      left: 0; bottom: 0;
+      background: $color1;
+      width: 100%; 
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: .5rem;
+      
+      span {
+        margin-right: .5rem;
+        padding: .5rem;
+        background: $color2;
+        border-radius: 50%;
+        height: 30px; width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}

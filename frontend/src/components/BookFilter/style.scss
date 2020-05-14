@@ -1,0 +1,55 @@
+@import '../../assets/scss/variables.scss';
+
+.filter-type {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin-top: 0;
+  z-index: 1;
+  position: relative;
+
+  .filter-parent {
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 1rem;
+    margin: 0 1rem;
+    position: relative;
+    min-width: 150px;
+    cursor: pointer;
+    border-bottom: 1px solid $color1;
+    transition: $transLinear;
+
+    @media(max-width: 600px) {
+      display: block;
+      margin: 0;
+    }
+
+    &:hover {
+      background: $color1;
+      ul {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.book-filter {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  transition: $transLinear;
+  position: absolute;
+  left: 0; right: 0; top: 50px;
+  background: $color1;
+  height: 238px;
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+
+  &.gender {
+    height: auto;
+  }
+}

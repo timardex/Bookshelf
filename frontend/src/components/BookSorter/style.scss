@@ -1,0 +1,13 @@
+.sorter-type {
+  list-style: none;
+  margin-top: 0;
+  padding: 0;
+  text-align: center;
+  overflow: auto;
+  white-space: nowrap;
+
+  .filter-handler {
+    display: inline-block;
+    margin: 0 .2rem;
+  }
+}

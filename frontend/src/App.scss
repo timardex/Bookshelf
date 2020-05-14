@@ -1,0 +1,102 @@
+@import './assets/scss/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $color2;
+  font-family: 'Roboto', sans-serif;
+}
+
+.App {
+  padding: 1rem;
+
+  .loading {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      text-align: center;
+    }
+
+    p {
+      margin-top: 0;
+    }
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+  }
+
+  .load-more-book {
+    margin: 2rem 0 1rem;
+    text-align: center;
+
+    svg {
+      position: absolute;
+      width: 20px; height: 20px;
+      top: 0; right: 1rem; bottom: 0;
+      margin: auto;
+    }
+  }
+
+  .btn {
+    position: relative;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    max-width: 150px;
+    margin: auto;
+    background: $color3;
+    color: $color1;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .clear-filter {
+    position: fixed;
+    bottom: 1rem; right: 1rem;
+  }
+
+  .filter-handler {
+    transition: $transLinear;
+    position: relative;
+
+    input {
+      position: absolute;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    input:checked + label {
+      background: $color3;
+      color: $color1;
+    }
+
+    input:not(:checked) + label {
+      background: transparent;
+    }
+
+    label {
+      position: relative;
+      display: block;
+      padding: .5rem;
+      cursor: pointer;
+    }
+
+    &:hover {
+      background: $color3;
+      color: $color1;
+    }
+  }
+}
