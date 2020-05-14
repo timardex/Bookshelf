@@ -7,16 +7,17 @@ import './style.scss'
 interface Props {
   bookshelf: Array<any>,
   selectedFilter: string,
+  search: string
 }
 
 const BookList: React.FC<Props> = (props: Props) => {
-  const {bookshelf, selectedFilter} = props;
+  const {bookshelf, selectedFilter, search} = props;
 
   /* const convertDate = (time: string):any => {
     const date = new Date(time);
     return date.toUTCString()
   } */
-  console.log(selectedFilter)
+  
   const filteredList = ():any => {
     switch(selectedFilter) {
       case 'all':
@@ -44,10 +45,16 @@ const BookList: React.FC<Props> = (props: Props) => {
     }
   }
 
+  const searchFilter = ():any => {
+    return filteredList().filter((value: any) => {
+      return value.name.toLowerCase().includes(search.toLowerCase()) || value.author.name.toLowerCase().includes(search.toLowerCase()) || value.genre.toLowerCase().includes(search.toLowerCase())
+    })
+  }
+
   return (
     <div id="book-list">
       <div className="box">
-        {filteredList().map((value: any, key: any) => {
+        {searchFilter().map((value: any, key: any) => {
             return (
             <div className="book" key={key}>
               <img src={`${value.image}.jpg`} alt={value.name} />

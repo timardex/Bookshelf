@@ -5,17 +5,20 @@ import {Loading} from 'assets/icons/Loading';
 import BookList from './components/BookList';
 import BookFilter from './components/BookFilter';
 import BookSorter from './components/BookSorter';
+import BookSearch from './components/BookSearch';
 
 import './App.scss'
 
 const App: React.FC<{}> = () => {
     const [bookshelf, getBookshelf] = useState<Array<any>>([]);
-    const [loading, setLoading] = useState<boolean>(true)
     const [numberOfBooks, setNumberOfBooks] = useState<number>(8);
+
+    const [loading, setLoading] = useState<boolean>(true);
     const [loadingBook, setLoadingBook] = useState<boolean>(false);
     const [loadingText, setLoadingText] = useState<string>('Load more');
-    const [selectedFilter, setSelectedFilter] = useState<string>('all')
-    const booksLoaded = bookshelf.length > 0;
+
+    const [selectedFilter, setSelectedFilter] = useState<string>('all');
+    const [search, setSearch] = useState<string>('')
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,8 +32,8 @@ const App: React.FC<{}> = () => {
     }, []);
 
     useEffect(() => {
-      booksLoaded ? setLoading(false) : setLoading(true)
-    }, [booksLoaded])
+      bookshelf.length > 0 ? setLoading(false) : setLoading(true)
+    }, [bookshelf.length])
 
     const loadMoreBook = (items: number):void => {
       setLoadingBook(true);
@@ -43,15 +46,37 @@ const App: React.FC<{}> = () => {
       }, 1000)
     }
   
+    const loadingScreen = (): JSX.Element => {
+      return (
+        <div className="loading">
+          <div>
+            <p>Content is loading, please wait ...</p>
+            <Loading />
+          </div>
+        </div>
+      )
+    }
+
+    const renderFooter = (): JSX.Element => {
+      return (
+        <footer>
+          <div className="load-more-book">
+            <div className="btn" onClick={() => loadMoreBook(numberOfBooks)}>{loadingText} {loadingBook && <Loading />}</div>
+          </div>
+        </footer>
+      )
+    }
+
+    const clearFilter = (): JSX.Element => {
+      return (
+        <div className="btn clear-filter" onClick={() => {setSelectedFilter('all'); setSearch('')}}>Clear Filters</div>
+      )
+    }
+
     return (
       <div className="App">
         {loading && 
-          <div className="loading">
-            <div>
-              <p>Content is loading, please wait ...</p>
-              <Loading />
-            </div>
-          </div>
+          loadingScreen()
         }
 
         {!loading && 
@@ -59,19 +84,16 @@ const App: React.FC<{}> = () => {
             <header>
               <BookFilter bookshelf={bookshelf.slice(0, numberOfBooks)} setSelectedFilter={setSelectedFilter}/>
               <BookSorter setSelectedFilter={setSelectedFilter}/>
+              <BookSearch setSearch={setSearch} search={search}/>
             </header>
 
             <main>
-              <BookList bookshelf={bookshelf.slice(0, numberOfBooks)} selectedFilter={selectedFilter} />
+              <BookList bookshelf={bookshelf.slice(0, numberOfBooks)} selectedFilter={selectedFilter} search={search}/>
             </main>
 
-            <footer>
-              <div className="load-more-book">
-                <div className="btn" onClick={() => loadMoreBook(numberOfBooks)}>{loadingText} {loadingBook && <Loading />}</div>
-              </div>
-            </footer>
+            {renderFooter()}
 
-            {selectedFilter !== 'all' && <div className="btn clear-filter" onClick={() => setSelectedFilter('all')}>Clear Filter</div>}
+            {(selectedFilter !== 'all' || search !== '') && clearFilter()}
           </div>
         }
       </div>
