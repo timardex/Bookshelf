@@ -69,7 +69,9 @@ const App: React.FC<{}> = () => {
 
     const clearFilter = (): JSX.Element => {
       return (
-        <div className="btn clear-filter" onClick={() => {setSelectedFilter('all'); setSearch('')}}>Clear Filters</div>
+        <div className="clear-filter">
+          <div className="btn" onClick={() => {setSelectedFilter('all'); setSearch('')}}>Clear Filters</div>
+        </div>
       )
     }
 
