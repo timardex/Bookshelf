@@ -1,4 +1,4 @@
-import React from  'react';
+import React from 'react';
 
 import './style.scss';
 
@@ -10,6 +10,7 @@ interface Props {
 
 const ClearFilter: React.FC<Props> = (props: Props) => {
   const {btnText, setSelectedFilter, setSearch} = props;
+
   return (
     <div className="clear-filter">
       <button className="btn" onClick={() => {setSelectedFilter(''); setSearch('')}}>
