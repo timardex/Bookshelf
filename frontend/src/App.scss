@@ -14,39 +14,10 @@ body {
 .App {
   padding: 1rem;
 
-  .loading {
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%; width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    div {
-      text-align: center;
-    }
-
-    p {
-      margin-top: 0;
-    }
-  }
-
   .container {
     width: 100%;
     max-width: 1280px;
     margin: auto;
-  }
-
-  .load-more-book {
-    margin: 2rem 0 1rem;
-    text-align: center;
-
-    svg {
-      position: absolute;
-      width: 20px; height: 20px;
-      top: 0; right: .5rem; bottom: 0;
-      margin: auto;
-    }
   }
 
   .btn {
@@ -55,27 +26,13 @@ body {
     padding: 1rem;
     width: 100%;
     max-width: 150px;
-    margin: auto;
     background: $color3;
     color: $color1;
     border-radius: 5px;
+    border: none;
     text-align: center;
     text-transform: uppercase;
-  }
-
-  .clear-filter {
-    position: fixed;
-    bottom: 0; right: 0; left: 0;
-    width: 100%;
-    max-width: 1280px;
-    margin: auto;
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-
-    .btn {
-      margin: initial;
-    }
+    outline: none;
   }
 
   .filter-handler {
