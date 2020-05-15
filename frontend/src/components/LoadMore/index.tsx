@@ -32,4 +32,4 @@ const LoadMore: React.FC<Props> = (props: Props) => {
   )
 }
 
-export default LoadMore
+export default LoadMore;

@@ -11,7 +11,7 @@ describe('<App />', () => {
     });
 
     it('should check if container exist or not', () => {
-        expect(app.find('.container').exists()).toBeFalsy();
+        expect(app.find('.container').exists()).toBeTruthy();
     });
 
     it('should check if clear-filter exist or not', () => {

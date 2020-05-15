@@ -3,17 +3,20 @@ import React from  'react';
 import './style.scss';
 
 interface Props {
+  btnText?: string,
   setSelectedFilter: Function,
   setSearch: Function,
 }
 
-const LoadingScreen: React.FC<Props> = (props: Props) => {
-  const {setSelectedFilter, setSearch} = props;
+const ClearFilter: React.FC<Props> = (props: Props) => {
+  const {btnText, setSelectedFilter, setSearch} = props;
   return (
     <div className="clear-filter">
-      <button className="btn" onClick={() => {setSelectedFilter(''); setSearch('')}}>Clear Filters</button>
+      <button className="btn" onClick={() => {setSelectedFilter(''); setSearch('')}}>
+        {btnText !== '' ? btnText : 'Clear all'}
+      </button>
     </div>
   )
 }
 
-export default LoadingScreen
+export default ClearFilter;

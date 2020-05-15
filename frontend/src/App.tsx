@@ -53,7 +53,7 @@ const App: React.FC<{}> = () => {
 
             <footer>
               <LoadMore numberOfBooks={numberOfBooks} setNumberOfBooks={setNumberOfBooks}/>
-              {(selectedFilter !== '' || search !== '') && <ClearFilter setSelectedFilter={setSelectedFilter} setSearch={setSearch} />}
+              {(selectedFilter !== '' || search !== '') && <ClearFilter btnText={'Clear filter'} setSelectedFilter={setSelectedFilter} setSearch={setSearch} />}
             </footer>
           </div>
         }

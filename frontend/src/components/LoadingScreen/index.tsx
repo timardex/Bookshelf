@@ -19,4 +19,4 @@ const LoadingScreen: React.FC<Props> = (props: Props) => {
   )
 }
 
-export default LoadingScreen
+export default LoadingScreen;

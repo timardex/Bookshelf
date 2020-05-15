@@ -13,4 +13,4 @@ When this is done, cd into server and run `npm install` and `npm start`. This wi
 Cd into frontend and run `npm install` and `npm start`. To run test `npm run test`.
 
 You can filter by book genre, author name and author genre. Sort books by book name, author name ASC and DESC. Search by author, book, genre and year.
-Every componet is reusable but they are connected
+Every component is reusable.
