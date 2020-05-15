@@ -25,7 +25,8 @@
     }
 
     &:hover {
-      background: $color1;
+      background: $color3;
+      color: $color1;
       ul {
         opacity: 1;
         visibility: visible;
@@ -51,5 +52,9 @@
 
   &.gender {
     height: auto;
+  }
+
+  .filter-handler {
+    border-top: 1px solid $color1
   }
 }

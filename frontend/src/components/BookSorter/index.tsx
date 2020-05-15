@@ -19,7 +19,7 @@ const BookSorter: React.FC<Props> = (props: Props) => {
   return (
     <nav>
       <ul className="sorter-type">
-        {sorterType.map((value: any, key: any) => {
+        {sorterType.map((value: string, key: any) => {
           return (
             <li key={key} className="filter-handler">
               <input type="radio" name="radio" value={value} id={key} onChange={() => setSelectedFilter(value)}/>

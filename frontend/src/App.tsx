@@ -17,7 +17,7 @@ const App: React.FC<{}> = () => {
     const [loadingBook, setLoadingBook] = useState<boolean>(false);
     const [loadingText, setLoadingText] = useState<string>('Load more');
 
-    const [selectedFilter, setSelectedFilter] = useState<string>('all');
+    const [selectedFilter, setSelectedFilter] = useState<string>('');
     const [search, setSearch] = useState<string>('')
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const App: React.FC<{}> = () => {
     }, []);
 
     useEffect(() => {
-      bookshelf.length > 0 ? setLoading(false) : setLoading(true)
+      setLoading(bookshelf.length === 0)
     }, [bookshelf.length])
 
     const loadMoreBook = (items: number):void => {
@@ -70,7 +70,7 @@ const App: React.FC<{}> = () => {
     const clearFilter = (): JSX.Element => {
       return (
         <div className="clear-filter">
-          <div className="btn" onClick={() => {setSelectedFilter('all'); setSearch('')}}>Clear Filters</div>
+          <div className="btn" onClick={() => {setSelectedFilter(''); setSearch('')}}>Clear Filters</div>
         </div>
       )
     }
@@ -84,9 +84,9 @@ const App: React.FC<{}> = () => {
         {!loading && 
           <div className="container">
             <header>
-              <BookFilter bookshelf={bookshelf.slice(0, numberOfBooks)} setSelectedFilter={setSelectedFilter}/>
-              <BookSorter setSelectedFilter={setSelectedFilter}/>
-              <BookSearch setSearch={setSearch} search={search}/>
+              <BookFilter bookshelf={bookshelf.slice(0, numberOfBooks)} setSelectedFilter={setSelectedFilter} />
+              <BookSorter setSelectedFilter={setSelectedFilter} />
+              <BookSearch setSearch={setSearch} search={search} />
             </header>
 
             <main>
@@ -95,7 +95,7 @@ const App: React.FC<{}> = () => {
 
             {renderFooter()}
 
-            {(selectedFilter !== 'all' || search !== '') && clearFilter()}
+            {(selectedFilter !== '' || search !== '') && clearFilter()}
           </div>
         }
       </div>

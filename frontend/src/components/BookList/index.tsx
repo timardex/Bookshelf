@@ -13,7 +13,7 @@ interface Props {
 const BookList: React.FC<Props> = (props: Props) => {
   const {bookshelf, selectedFilter, search} = props;
 
-  const convertDate = (time: string):any => {
+  const convertDate = (time: string):string => {
     const date = new Date(time).toUTCString();
     const thisYear = new Date().getUTCFullYear();
     return date.includes(`${thisYear}`) ? 'this year' : 'last year'
@@ -21,7 +21,7 @@ const BookList: React.FC<Props> = (props: Props) => {
   
   const filteredList = ():any => {
     switch(selectedFilter) {
-      case 'all':
+      case '':
         return bookshelf;
       case 'Book name ASC':
         return bookshelf.sort((a: any, b: any) => {
@@ -66,7 +66,7 @@ const BookList: React.FC<Props> = (props: Props) => {
                 <h3 className="title custom">{value.name}</h3>
                 <p className="genre custom">{value.genre}</p>
                 <p className="date custom">Published <span>{convertDate(value.date)}</span></p>
-                <p className="author custom" title={`Author gender ${value.author.gender}`}>
+                <p className="author custom">
                   <span>{value.author.gender === 'female' ? <Female /> : <Male />}</span>
                   {value.author.name}
                 </p>
