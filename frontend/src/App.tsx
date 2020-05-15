@@ -49,12 +49,20 @@ const App: React.FC<{}> = () => {
             </header>
 
             <main>
-              <BookList bookshelf={bookshelf.slice(0, numberOfBooks)} getBooksLength={getBooksLength} booksLength={booksLength} selectedFilter={selectedFilter} search={search}/>
+              <BookList
+                bookshelf={bookshelf.slice(0, numberOfBooks)}
+                getBooksLength={getBooksLength}
+                booksLength={booksLength}
+                selectedFilter={selectedFilter}
+                search={search}/>
             </main>
 
             <footer>
               {
-                booksLength === numberOfBooks && <LoadMore numberOfBooks={numberOfBooks} setNumberOfBooks={setNumberOfBooks}/>}
+                booksLength === numberOfBooks &&
+                <LoadMore
+                  numberOfBooks={numberOfBooks}
+                  setNumberOfBooks={setNumberOfBooks} />}
 
               {
                 (selectedFilter !== '' || search !== '') && 
