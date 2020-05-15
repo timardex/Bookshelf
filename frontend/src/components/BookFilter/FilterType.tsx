@@ -7,7 +7,7 @@ interface Props {
   setSelectedFilter: Function
 }
 
-const BookFilterType: React.FC<Props> = (props: Props) => {
+const FilterType: React.FC<Props> = (props: Props) => {
   const {bookshelf, type, setSelectedFilter} = props;
   const replaceChar = (item: string): any => {
     return item.replace(/ /g, "-").toLowerCase()
@@ -27,4 +27,4 @@ const BookFilterType: React.FC<Props> = (props: Props) => {
   )
 }
 
-export default BookFilterType;
+export default FilterType;
