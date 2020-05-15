@@ -4,7 +4,8 @@ import BookList from './index';
 
 const bookshelf = [] as Array<any>
 describe('<BookList />', () => {
-    const app = shallow(<BookList bookshelf={bookshelf} selectedFilter={'string'} search={'string'}/>);
+    const getBooksLengthMock = jest.fn();
+    const app = shallow(<BookList bookshelf={bookshelf} getBooksLength={getBooksLengthMock} booksLength={8} selectedFilter={'string'} search={'string'}/>);
 
     it('should check if BookList exist or not', () => {
         expect(app.find('.book-list').exists()).toBeTruthy();

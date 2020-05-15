@@ -2,6 +2,10 @@
 
 .book-list {
   width: 100%;
+
+  .no-result {
+    text-align: center;
+  }
   
   .box {
     display: grid;

@@ -15,6 +15,7 @@ import './App.scss'
 const App: React.FC<{}> = () => {
     const [bookshelf, getBookshelf] = useState<Array<any>>([]);
     const [numberOfBooks, setNumberOfBooks] = useState<number>(8);
+    const [booksLength, getBooksLength] = useState<number>(numberOfBooks);
 
     const [loading, setLoading] = useState<boolean>();
     
@@ -48,11 +49,11 @@ const App: React.FC<{}> = () => {
             </header>
 
             <main>
-              <BookList bookshelf={bookshelf.slice(0, numberOfBooks)} selectedFilter={selectedFilter} search={search}/>
+              <BookList bookshelf={bookshelf.slice(0, numberOfBooks)} getBooksLength={getBooksLength} booksLength={booksLength} selectedFilter={selectedFilter} search={search}/>
             </main>
 
             <footer>
-              <LoadMore numberOfBooks={numberOfBooks} setNumberOfBooks={setNumberOfBooks}/>
+              {booksLength === numberOfBooks && <LoadMore numberOfBooks={numberOfBooks} setNumberOfBooks={setNumberOfBooks}/>}
               {(selectedFilter !== '' || search !== '') && <ClearFilter btnText={'Clear filter'} setSelectedFilter={setSelectedFilter} setSearch={setSearch} />}
             </footer>
           </div>

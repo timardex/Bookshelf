@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import {Female} from 'assets/icons/Female';
 import {Male} from 'assets/icons/Male';
 
@@ -6,20 +6,22 @@ import './style.scss'
 
 interface Props {
   bookshelf: Array<any>,
+  getBooksLength: Function,
+  booksLength: number,
   selectedFilter: string,
   search: string
 }
 
-const BookList: React.FC<Props> = (props: Props) => {
-  const {bookshelf, selectedFilter, search} = props;
+const convertDate = (time: string):string => {
+  const date = new Date(time).toUTCString();
+  const thisYear = new Date().getUTCFullYear();
+  return date.includes(`${thisYear}`) ? 'this year' : 'last year'
+}
 
-  const convertDate = (time: string):string => {
-    const date = new Date(time).toUTCString();
-    const thisYear = new Date().getUTCFullYear();
-    return date.includes(`${thisYear}`) ? 'this year' : 'last year'
-  }
+const BookList: React.FC<Props> = (props: Props) => {
+  const {bookshelf, getBooksLength, booksLength, selectedFilter, search} = props;
   
-  const filteredList = ():any => {
+  const filteredList = useCallback(():any => {
     switch(selectedFilter) {
       case '':
         return bookshelf;
@@ -44,16 +46,20 @@ const BookList: React.FC<Props> = (props: Props) => {
           return value.genre === selectedFilter || value.author.name === selectedFilter || value.author.gender === selectedFilter
         });
     }
-  }
+  }, [selectedFilter, bookshelf])
 
-  const searchFilter = ():any => {
+  const searchFilter = useCallback(():any => {
     return filteredList().filter((value: any) => {
       return value.name.toLowerCase().includes(search.toLowerCase()) ||
       value.author.name.toLowerCase().includes(search.toLowerCase()) || 
       value.genre.toLowerCase().includes(search.toLowerCase()) ||
       value.date.toLowerCase().includes(search.toLowerCase());
     })
-  }
+  }, [filteredList, search])
+
+  useEffect(() => {
+    getBooksLength(searchFilter().length)
+  }, [getBooksLength, searchFilter])
 
   return (
     <div className="book-list">
@@ -75,6 +81,8 @@ const BookList: React.FC<Props> = (props: Props) => {
             )
         })}
       </div>
+
+      {booksLength === 0 && <p className="no-result">No match found! Please try again.</p>}
     </div>
   )
 }
