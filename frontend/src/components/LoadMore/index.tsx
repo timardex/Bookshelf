@@ -10,13 +10,9 @@ interface Props {
 const LoadMore: React.FC<Props> = (props: Props) => {
   const {numberOfBooks, setNumberOfBooks} = props;
 
-  const loadMoreBook = (items: number):void => {
-    setNumberOfBooks(numberOfBooks + items);
-  }
-
   return (
     <div className="load-more">
-      <button className="btn" onClick={() => loadMoreBook(numberOfBooks)}>Load more</button>
+      <button className="btn" onClick={() => setNumberOfBooks(numberOfBooks + numberOfBooks)}>Load more</button>
     </div>
   )
 }

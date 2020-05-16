@@ -43,6 +43,17 @@ const App: React.FC<{}> = () => {
         {!loading && 
           <div className="container">
             <header>
+              <div className="top-bar">
+                <h1>Bookshelf <small>available books: {booksLength}</small></h1>
+                {
+                  (selectedFilter !== '' || search !== '') && 
+                  <ClearFilter
+                    btnText={'Clear filter'}
+                    setSelectedFilter={setSelectedFilter}
+                    setSearch={setSearch} />
+                }
+
+              </div>
               <BookFilter bookshelf={bookshelf.slice(0, numberOfBooks)} setSelectedFilter={setSelectedFilter} />
               <BookSorter setSelectedFilter={setSelectedFilter} />
               <BookSearch setSearch={setSearch} search={search} />
@@ -62,14 +73,7 @@ const App: React.FC<{}> = () => {
                 booksLength === numberOfBooks &&
                 <LoadMore
                   numberOfBooks={numberOfBooks}
-                  setNumberOfBooks={setNumberOfBooks} />}
-
-              {
-                (selectedFilter !== '' || search !== '') && 
-                <ClearFilter
-                  btnText={'Clear filter'}
-                  setSelectedFilter={setSelectedFilter}
-                  setSearch={setSearch} />
+                  setNumberOfBooks={setNumberOfBooks} />
               }
             </footer>
           </div>
