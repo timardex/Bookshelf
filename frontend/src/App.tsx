@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import Header from './components/Header';
 import BookList from './components/Book/BookList';
-import BookFilter from './components/Book/BookFilter';
-import BookSorter from './components/Book/BookSorter';
-import BookSearch from './components/Book/BookSearch';
-
 import LoadingScreen from './components/LoadingScreen';
 import LoadMore from './components/LoadMore';
-import ClearFilter from './components/ClearFilter';
+
 
 import './App.scss'
 
@@ -42,22 +39,15 @@ const App: React.FC<{}> = () => {
 
         {!loading && 
           <div className="container">
-            <header>
-              <div className="top-bar">
-                <h1>Bookshelf <small>available books: {booksLength}</small></h1>
-                {
-                  (selectedFilter !== '' || search !== '') && 
-                  <ClearFilter
-                    btnText={'Clear filter'}
-                    setSelectedFilter={setSelectedFilter}
-                    setSearch={setSearch} />
-                }
-
-              </div>
-              <BookFilter bookshelf={bookshelf.slice(0, numberOfBooks)} setSelectedFilter={setSelectedFilter} />
-              <BookSorter setSelectedFilter={setSelectedFilter} />
-              <BookSearch setSearch={setSearch} search={search} />
-            </header>
+            
+            <Header
+              booksLength={booksLength}
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+              search={search}
+              setSearch={setSearch}
+              bookshelf={bookshelf.slice(0, numberOfBooks)}
+            />
 
             <main>
               <BookList
