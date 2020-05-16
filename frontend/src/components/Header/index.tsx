@@ -4,6 +4,8 @@ import BookSorter from '../Book/BookSorter';
 import BookSearch from '../Book/BookSearch';
 import ClearFilter from '../ClearFilter';
 
+import './style.scss';
+
 interface Props {
   booksLength: number,
   selectedFilter: string,
