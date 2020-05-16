@@ -4,7 +4,7 @@ import LoadMore from './index';
 
 describe('<LoadMore />', () => {
     const setNumberOfBooksMock = jest.fn();
-    const app = shallow(<LoadMore numberOfBooks={8} setNumberOfBooks={setNumberOfBooksMock}/>);
+    const app = shallow(<LoadMore numberOfBooks={8} loadMoreQuantity={16} setNumberOfBooks={setNumberOfBooksMock}/>);
 
     it('should check if LoadMore exist or not', () => {
         expect(app.find('.load-more').exists()).toBeTruthy();

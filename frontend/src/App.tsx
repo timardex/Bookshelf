@@ -63,6 +63,7 @@ const App: React.FC<{}> = () => {
                 booksLength === numberOfBooks &&
                 <LoadMore
                   numberOfBooks={numberOfBooks}
+                  loadMoreQuantity={8}
                   setNumberOfBooks={setNumberOfBooks} />
               }
             </footer>

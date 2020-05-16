@@ -6,6 +6,7 @@
   margin: auto;
   width: 100%;
   max-width: 1280px;
+  height: 50px;
   z-index: 10;
   padding: .5rem 1rem;
   background: $color1;
@@ -20,6 +21,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media(max-width: $smSize) {
+      font-size: 1.2rem;
+    }
 
     small {
       font-size: 60%;

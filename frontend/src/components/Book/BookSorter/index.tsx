@@ -3,11 +3,12 @@ import React from 'react';
 import './style.scss'
 
 interface Props {
-  setSelectedFilter: Function
+  setSelectedFilter: Function,
+  selectedFilter: string
 }
 
 const BookSorter: React.FC<Props> = (props: Props) => {
-  const {setSelectedFilter} = props;
+  const {setSelectedFilter, selectedFilter} = props;
   
   const sorterType = [
     'Book name ASC',
@@ -21,9 +22,8 @@ const BookSorter: React.FC<Props> = (props: Props) => {
       <ul className="sorter-type">
         {sorterType.map((value: string, key: any) => {
           return (
-            <li key={key} className="filter-handler">
-              <input type="radio" name="radio" value={value} id={key} onChange={() => setSelectedFilter(value)}/>
-              <label htmlFor={key}>{value}</label>
+            <li key={key} className={`filter-handler ${selectedFilter === value ? 'active' : ''}`} onClick={() => setSelectedFilter(value)}>
+              {value}
             </li>
           )
         })}

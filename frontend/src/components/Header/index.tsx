@@ -20,7 +20,7 @@ const Header: React.FC<Props> = (props: Props) => {
   return (
     <header>
       <div className="top-bar">
-        <h1>Bookshelf <small>available books: {booksLength}</small></h1>
+        <h1>Bookshelf <small>loaded books: {booksLength}</small></h1>
         {
           (selectedFilter !== '' || search !== '') && 
           <ClearFilter
@@ -30,8 +30,8 @@ const Header: React.FC<Props> = (props: Props) => {
         }
 
       </div>
-      <BookFilter bookshelf={bookshelf} setSelectedFilter={setSelectedFilter} />
-      <BookSorter setSelectedFilter={setSelectedFilter} />
+      <BookFilter bookshelf={bookshelf} setSelectedFilter={setSelectedFilter} selectedFilter={selectedFilter}/>
+      <BookSorter setSelectedFilter={setSelectedFilter} selectedFilter={selectedFilter}/>
       <BookSearch setSearch={setSearch} search={search} />
     </header>
   )

@@ -13,9 +13,9 @@ interface Props {
 }
 
 const convertDate = (time: string):string => {
-  const date = new Date(time).toUTCString();
+  const date = new Date(time).getUTCFullYear();
   const thisYear = new Date().getUTCFullYear();
-  return date.includes(`${thisYear}`) ? 'this year' : 'last year'
+  return date === thisYear ? 'this year' : 'last year'
 }
 
 const BookList: React.FC<Props> = (props: Props) => {
@@ -43,7 +43,10 @@ const BookList: React.FC<Props> = (props: Props) => {
         });
       default:
         return bookshelf.filter((value: any) => {
-          return value.genre === selectedFilter || value.author.name === selectedFilter || value.author.gender === selectedFilter
+          return value.genre === selectedFilter ||
+          value.author.name === selectedFilter ||
+          value.author.gender === selectedFilter ||
+          value.date.includes(selectedFilter)
         });
     }
   }, [selectedFilter, bookshelf])
@@ -52,8 +55,7 @@ const BookList: React.FC<Props> = (props: Props) => {
     return filteredList().filter((value: any) => {
       return value.name.toLowerCase().includes(search.toLowerCase()) ||
       value.author.name.toLowerCase().includes(search.toLowerCase()) || 
-      value.genre.toLowerCase().includes(search.toLowerCase()) ||
-      value.date.toLowerCase().includes(search.toLowerCase());
+      value.genre.toLowerCase().includes(search.toLowerCase())
     })
   }, [filteredList, search])
 

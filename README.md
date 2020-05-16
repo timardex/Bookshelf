@@ -18,6 +18,7 @@ Cd into frontend and run `npm install` and `npm start`. To run test `npm run tes
 - book genre
 - author name
 - author genre
+- book published year
 
 2. Sort books by:
 - book name ASC and DESC
@@ -27,7 +28,6 @@ Cd into frontend and run `npm install` and `npm start`. To run test `npm run tes
 - author
 - book
 - genre
-- year
 
 4. Load more books
 5. Clear all filters and search

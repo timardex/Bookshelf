@@ -40,31 +40,10 @@ body {
     transition: $transLinear;
     position: relative;
     color: $color3;
-
-    input {
-      position: absolute;
-      z-index: 2;
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    input:checked + label {
-      background: $color3;
-      color: $color1;
-    }
-
-    input:not(:checked) + label {
-      background: transparent;
-    }
-
-    label {
-      position: relative;
-      display: block;
-      padding: .5rem;
-      cursor: pointer;
-    }
-
-    &:hover {
+    padding: .5rem;
+    cursor: pointer;
+    
+    &:hover, &.active {
       background: $color3;
       color: $color1;
     }

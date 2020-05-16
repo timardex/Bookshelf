@@ -5,7 +5,8 @@ import './style.scss'
 
 interface Props {
   bookshelf: Array<any>,
-  setSelectedFilter: Function
+  setSelectedFilter: Function,
+  selectedFilter: string
 }
 
 const getUniques = (filterType: Array<any>): any => {
@@ -15,7 +16,7 @@ const getUniques = (filterType: Array<any>): any => {
 }
 
 const BookFilter: React.FC<Props> = (props: Props) => {
-  const {bookshelf, setSelectedFilter} = props;
+  const {bookshelf, setSelectedFilter, selectedFilter} = props;
 
   const filterByGenre = ():any => {
     return bookshelf.map((value: any) => {
@@ -35,6 +36,14 @@ const BookFilter: React.FC<Props> = (props: Props) => {
     })
   }
 
+  const filterByYear = ():any => {
+    return bookshelf.map((value: any) => {
+      return new Date(value.date).getUTCFullYear().toString();
+    }).sort((a: any, b: any) => {
+      return a > b ? -1 : 1
+    })
+  }
+
   const filterType = [
     {
       type: 'genre',
@@ -47,6 +56,10 @@ const BookFilter: React.FC<Props> = (props: Props) => {
     {
       type: 'gender',
       func: getUniques(filterByAuthorGender())
+    },
+    {
+      type: 'year',
+      func: getUniques(filterByYear())
     }
   ] as Array<any>
 
@@ -57,7 +70,7 @@ const BookFilter: React.FC<Props> = (props: Props) => {
           return (
             <li key={key} className="filter-parent">
               {value.type}
-              <FilterType bookshelf={value.func} type={value.type} setSelectedFilter={setSelectedFilter}/>
+              <FilterType bookshelf={value.func} type={value.type} setSelectedFilter={setSelectedFilter} selectedFilter={selectedFilter}/>
             </li>
           )
         })}

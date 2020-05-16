@@ -11,7 +11,7 @@ const BookSearch: React.FC<Props> = (props: Props) => {
   const {setSearch, search} = props;
   return (
     <div className="book-search">
-      <input type="text" placeholder="Search by author, book, genre or year" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+      <input type="text" placeholder="Search by author, book or genre" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
     </div>
   )
 }

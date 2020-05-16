@@ -8,7 +8,7 @@ interface Props {
 }
 
 const LoadingScreen: React.FC<Props> = (props: Props) => {
-  const {loadingText} = props
+  const {loadingText} = props;
   return (
     <div className="loading">
       <div>
