@@ -4,7 +4,7 @@ import BookSorter from './index';
 
 describe('<BookSorter />', () => {
     const setSelectedFilterMock = jest.fn();
-    const app = shallow(<BookSorter setSelectedFilter={setSelectedFilterMock}/>);
+    const app = shallow(<BookSorter setSelectedFilter={setSelectedFilterMock} selectedFilter={'string'}/>);
 
     it('should check if BookSorter exist or not', () => {
         expect(app.find('.sorter-type').exists()).toBeTruthy();
@@ -14,8 +14,7 @@ describe('<BookSorter />', () => {
         expect(app.find('.sorter-type').props()).not.toBeUndefined();
     });
 
-    it('should test if input radio is not checked', () => {
-        app.find('input').at(0).simulate('change', {target: {checked: false}});
-        expect(app.find('input').at(0).props().checked).not.toEqual(true)
+    it('should handle click events', () => {
+        app.find('.filter-handler').at(0).simulate('click');
     });
 });

@@ -5,7 +5,7 @@ import FilterType from './FilterType';
 const bookshelf = [] as Array<any>
 describe('<FilterType />', () => {
     const setSelectedFilterMock = jest.fn();
-    const app = shallow(<FilterType bookshelf={bookshelf} type={'string'} setSelectedFilter={setSelectedFilterMock}/>);
+    const app = shallow(<FilterType bookshelf={bookshelf} type={'string'} setSelectedFilter={setSelectedFilterMock} selectedFilter={'string'}/>);
 
     it('should check if FilterType exist or not', () => {
         expect(app.find('.book-filter').exists()).toBeTruthy();
