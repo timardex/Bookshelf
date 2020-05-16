@@ -14,7 +14,7 @@ const App: React.FC<{}> = () => {
     const [numberOfBooks, setNumberOfBooks] = useState<number>(8);
     const [booksLength, getBooksLength] = useState<number>(numberOfBooks);
 
-    const [loading, setLoading] = useState<boolean>();
+    const [loading, setLoading] = useState<boolean>(true);
     
     const [selectedFilter, setSelectedFilter] = useState<string>('');
     const [search, setSearch] = useState<string>('');
