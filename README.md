@@ -12,4 +12,22 @@ When this is done, cd into server and run `npm install` and `npm start`. This wi
 ## Frontend
 Cd into frontend and run `npm install` and `npm start`. To run test `npm run test`.
 
-You can filter by book genre, author name and author genre. Sort books by book name, author name ASC and DESC. Search by author, book, genre and year.
+### You can
+
+1. Filter books by:
+- book genre
+- author name
+- author genre
+
+2. Sort books by:
+- book name ASC and DESC
+- author name ASC and DESC
+
+3. Search books by:
+- author
+- book
+- genre
+- year
+
+4. Load more books
+5. Clear all filters and search
