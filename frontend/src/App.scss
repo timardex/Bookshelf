@@ -20,6 +20,7 @@ body {
     margin: auto;
     position: relative;
     margin-top: 2rem;
+    overflow: hidden;
   }
 
   .btn {
@@ -42,7 +43,7 @@ body {
     color: $color3;
     padding: .5rem;
     cursor: pointer;
-    
+
     &:hover, &.active {
       background: $color3;
       color: $color1;
