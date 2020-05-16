@@ -17,7 +17,7 @@ Cd into frontend and run `npm install` and `npm start`. To run test `npm run tes
 1. Filter books by:
 - book genre
 - author name
-- author genre
+- author gender
 - book published year
 
 2. Sort books by:
