@@ -10,8 +10,10 @@ import LoadMore from './components/LoadMore';
 import './App.scss'
 
 const App: React.FC<{}> = () => {
+    const initialBookQuantity: number = 8;
+    
     const [bookshelf, getBookshelf] = useState<Array<any>>([]);
-    const [numberOfBooks, setNumberOfBooks] = useState<number>(8);
+    const [numberOfBooks, setNumberOfBooks] = useState<number>(initialBookQuantity);
     const [booksLength, getBooksLength] = useState<number>(numberOfBooks);
 
     const [loading, setLoading] = useState<boolean>(true);
@@ -63,7 +65,7 @@ const App: React.FC<{}> = () => {
                 booksLength === numberOfBooks &&
                 <LoadMore
                   numberOfBooks={numberOfBooks}
-                  loadMoreQuantity={8}
+                  loadMoreQuantity={initialBookQuantity}
                   setNumberOfBooks={setNumberOfBooks} />
               }
             </footer>
