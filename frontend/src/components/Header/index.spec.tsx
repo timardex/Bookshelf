@@ -23,4 +23,8 @@ describe('<Header />', () => {
     it('should check props passed in', () => {
         expect(app.find('header').props()).not.toBeUndefined();
     });
+
+    it('should scroll to top not be visible', () => {
+        expect(app.find('.scroll-to-top').exists()).not.toBeTruthy();
+    });
 });

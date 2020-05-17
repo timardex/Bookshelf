@@ -16,6 +16,7 @@ describe('<BookSearch />', () => {
 
     it('should test if input search value is changed', () => {
         app.find('input').simulate('change', {target: {value: ''}});
-        expect(app.find('input').text()).not.toEqual('something')
+        expect(app.find('input').text()).not.toEqual('something');
+        expect(setSearchMock).toHaveBeenCalled();
     });
 });

@@ -16,5 +16,6 @@ describe('<BookSorter />', () => {
 
     it('should handle click events', () => {
         app.find('.filter-handler').at(0).simulate('click');
+        expect(setSelectedFilterMock).toHaveBeenCalled();
     });
 });

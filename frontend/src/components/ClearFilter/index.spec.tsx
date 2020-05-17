@@ -14,7 +14,9 @@ describe('<ClearFilter />', () => {
     it('should check props passed in', () => {
         expect(app.find('.clear-filter').props()).not.toBeUndefined();
     });
-    it('should handle click events', () => {
-      app.find('.btn').simulate('click')
+    it('should clear filter and search', () => {
+        app.find('.btn').simulate('click');
+        expect(setSelectedFilterMock).toHaveBeenCalled();
+        expect(setSearchMock).toHaveBeenCalled();
     });
 });

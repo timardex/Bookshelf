@@ -25,8 +25,12 @@ const App: React.FC<{}> = () => {
       const fetchData = async () => {
           setLoading(true);
 
-          const result = await axios('http://localhost:3001/data');
-          getBookshelf(result.data);
+          try {
+            const result = await axios.get('http://localhost:3001/data');
+            getBookshelf(result.data);
+          } catch(error) {
+            return error
+          }
 
           setLoading(false);
       };

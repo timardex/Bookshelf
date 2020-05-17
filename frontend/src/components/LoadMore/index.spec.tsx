@@ -13,7 +13,8 @@ describe('<LoadMore />', () => {
     it('should check props passed in', () => {
         expect(app.find('.load-more').props()).not.toBeUndefined();
     });
-    it('should handle click events', () => {
-      app.find('.btn').simulate('click')
+    it('should load more content', () => {
+        app.find('.btn').simulate('click');
+        expect(setNumberOfBooksMock).toHaveBeenCalled()
     });
 });
