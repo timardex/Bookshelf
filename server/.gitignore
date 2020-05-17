@@ -5,7 +5,7 @@
 
 # testing
 /coverage
-/data/data.json
+data.json
 
 # production
 /build
