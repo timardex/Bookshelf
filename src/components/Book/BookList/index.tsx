@@ -27,8 +27,6 @@ const BookList: React.FC<Props> = (props: Props) => {
         setBooks(bookshelf);
     }, [bookshelf]);
 
-    console.log(books);
-
     const addToFavourites = (item: any): any => {
         setBooks(books.map((value: any) => (value.name === item.name ? { ...value, favourite: true } : value)));
     };
