@@ -18,6 +18,7 @@ Cd into frontend and run `npm install` and `npm start`. To run test `npm run tes
 
 -   book name ASC and DESC
 -   author name ASC and DESC
+-   favourites
 
 3. Search books by:
 
