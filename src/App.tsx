@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import data from './components/data.json';
 
 import Header from './components/Header';
@@ -9,12 +9,16 @@ import './App.scss';
 
 const App: React.FC<{}> = () => {
     const initialBookQuantity: number = 8;
-    const bookshelf = data;
 
     const [numberOfBooks, setNumberOfBooks] = useState<number>(initialBookQuantity);
     const [booksLength, getBooksLength] = useState<number>(numberOfBooks);
     const [selectedFilter, setSelectedFilter] = useState<string>('');
     const [search, setSearch] = useState<string>('');
+    const [bookshelf, getBookshelf] = useState<Array<any>>(data.slice(0, numberOfBooks));
+
+    useEffect(() => {
+        getBookshelf(data.slice(0, numberOfBooks));
+    }, [numberOfBooks]);
 
     return (
         <div className="App">
@@ -25,12 +29,12 @@ const App: React.FC<{}> = () => {
                     setSelectedFilter={setSelectedFilter}
                     search={search}
                     setSearch={setSearch}
-                    bookshelf={bookshelf.slice(0, numberOfBooks)}
+                    bookshelf={bookshelf}
                 />
 
                 <main>
                     <BookList
-                        bookshelf={bookshelf.slice(0, numberOfBooks)}
+                        bookshelf={bookshelf}
                         getBooksLength={getBooksLength}
                         booksLength={booksLength}
                         selectedFilter={selectedFilter}

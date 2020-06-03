@@ -23,6 +23,12 @@ const BookList: React.FC<Props> = (props: Props) => {
     const { bookshelf, getBooksLength, booksLength, selectedFilter, search } = props;
     const [books, setBooks] = useState<any>(bookshelf);
 
+    useEffect(() => {
+        setBooks(bookshelf);
+    }, [bookshelf]);
+
+    console.log(books);
+
     const addToFavourites = (item: any): any => {
         setBooks(books.map((value: any) => (value.name === item.name ? { ...value, favourite: true } : value)));
     };
