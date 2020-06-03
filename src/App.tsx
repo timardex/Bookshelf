@@ -11,10 +11,10 @@ const App: React.FC<{}> = () => {
     const initialBookQuantity: number = 8;
 
     const [numberOfBooks, setNumberOfBooks] = useState<number>(initialBookQuantity);
-    const [booksLength, getBooksLength] = useState<number>(numberOfBooks);
+    const [booksLength, getBooksLength] = useState<number>(0);
     const [selectedFilter, setSelectedFilter] = useState<string>('');
     const [search, setSearch] = useState<string>('');
-    const [bookshelf, getBookshelf] = useState<Array<any>>(data.slice(0, numberOfBooks));
+    const [bookshelf, getBookshelf] = useState<Array<any>>([]);
 
     useEffect(() => {
         getBookshelf(data.slice(0, numberOfBooks));

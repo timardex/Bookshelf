@@ -37,8 +37,6 @@ const BookList: React.FC<Props> = (props: Props) => {
 
     const filteredList = useCallback((): any => {
         switch (selectedFilter) {
-            case '':
-                return books;
             case 'Book name ASC':
                 return books.sort((a: any, b: any) => {
                     return a.name > b.name ? -1 : 1;
